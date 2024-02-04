@@ -8,6 +8,9 @@ if (!defined("ROBOTS_FACTORY_ASSETS_URL")) {
     define("ROBOTS_FACTORY_ASSETS_URL", get_template_directory_uri() . '/assets/');
 };
 
+add_theme_support('title-tag');
+add_theme_support('post-thumbnails');
+
 /**
  * Function that enqueue all of assets
  * 
@@ -35,3 +38,13 @@ function restorant_enqueue_assets()
 
 };
 add_action("wp_enqueue_scripts", "restorant_enqueue_assets");
+
+
+function restoran_register_menus() {
+    register_nav_menus(
+        array(
+        'header-menu' => __('Header Menu')
+        )
+        );
+}
+add_action("init", "restoran_register_menus");

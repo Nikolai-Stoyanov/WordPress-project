@@ -27,7 +27,7 @@
 
 </head>
 
-<body>
+<body <?php body_class(); ?>>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
         <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -43,7 +43,6 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="<?php echo get_home_url(); ?>" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -66,4 +65,18 @@
                     </div>
                     <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
+                <?php
+                    if (has_nav_menu('header-menu')) {
+
+                        wp_nav_menu($args = array(
+                            'menu' => "navbarCollapse", // (int|string|WP_Term) Desired menu. Accepts a menu ID, slug, name, or object.
+                            'menu_class' => "navbar-nav ms-auto py-0 pe-4", // (string) CSS class to use for the ul element which forms the menu. Default 'menu'.
+                            'menu_id' => "navbarCollapse", // (string) The ID that is applied to the ul element which forms the menu. Default is the menu slug, incremented.
+                            'container' => "div", // (string) Whether to wrap the ul, and what to wrap it with. Default 'div'.
+                            'container_class' => "collapse navbar-collapse", // (string) Class that is applied to the container. Default 'menu-{menu slug}-container'.
+                            'container_id' => "navbarCollapse", // (string) The ID that is applied to the container.
+                            'theme_location' => "header-menu", // (string) Theme location to be used. Must be registered with register_nav_menu() in order to be selectable by the user.
+                        ));
+                    }
+                ?>
             </nav>
