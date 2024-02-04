@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 
 <head>
-    <meta charset="utf-8">
-    <title>Restoran - Bootstrap Restaurant Template</title>
+
+    <?php wp_head(); ?>
+    <meta charset="<?php bloginfo('charset'); ?>" />
+    <title>
+        <?php wp_title(); ?>
+    </title>
+    <title>Restoran</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="<?php echo ROBOTS_FACTORY_ASSETS_URL; ?>/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="http://localhost:8080/softuni/wp-content/themes/softuni/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="http://localhost:8080/softuni/wp-content/themes/softuni/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="http://localhost:8080/softuni/wp-content/themes/softuni/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="http://localhost:8080/softuni/wp-content/themes/softuni/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="http://localhost:8080/softuni/wp-content/themes/softuni/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -46,7 +41,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
+                <a href="<?php echo get_home_url(); ?>" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
