@@ -5,15 +5,6 @@
         <h1 class="display-3 text-white mb-3 animated slideInDown">
             <?php the_archive_title(); ?>
         </h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">
-                    <?php the_archive_title(); ?>
-                </li>
-            </ol>
-        </nav>
     </div>
 </div>
 </div>
@@ -45,7 +36,7 @@ $restorant_archive_query = new WP_Query($restorant_archive_arg);
                         <?php the_post_thumbnail(); ?>
                     <?php else: ?>
                         <img class="img-fluid flex-shrink-0 rounded-circle"
-                            src="<?php echo ROBOTS_FACTORY_ASSETS_URL; ?>/img/testimonial-4.jpg"
+                            src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-4.jpg"
                             style="width: 100px; height: 100px;">
                     <?php endif; ?>
                     <div>

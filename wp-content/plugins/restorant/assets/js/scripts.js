@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-
     $('.upvote').on('click', function(e){
 
       
@@ -16,8 +15,13 @@ jQuery(document).ready(function($) {
                 post_id: post_id, // we need to make this dynamic
             },
             success: function(msg){
-                console.log(msg);
+                console.log(msg,'123');
             }
         });
     });
 }); 
+
+jQuery(document).ready(function($) {
+ 
+    $(".owl-carousel").owlCarousel();
+  });

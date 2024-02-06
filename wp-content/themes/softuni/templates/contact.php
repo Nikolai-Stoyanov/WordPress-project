@@ -1,3 +1,4 @@
+<?php // Template Name: contact ?>
 <?php get_header(); ?>
 
 <div class="container-xxl py-5 bg-dark hero-header mb-5">
@@ -5,8 +6,7 @@
         <h1 class="display-3 text-white mb-3 animated slideInDown">Contact Us</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo get_home_url( '/' ); ?>">Home</a></li>
                 <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
             </ol>
         </nav>
