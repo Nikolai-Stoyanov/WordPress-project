@@ -204,7 +204,7 @@ if (!class_exists("Restorant_Cpt")):
 		}
 
 		/**
-		 * Callback function for my Price Metabox
+		 * Callback function for Price Metabox
 		 *
 		 * @return void
 		 */
@@ -244,7 +244,7 @@ if (!class_exists("Restorant_Cpt")):
 
 
 		/**
-		 * Save my Foods post meta
+		 * Save Foods post meta
 		 *
 		 * @return void
 		 */

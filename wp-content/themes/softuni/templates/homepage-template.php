@@ -9,7 +9,8 @@
                 <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam
                     ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita
                     duo justo magna dolore erat amet</p>
-                <a href="#reservation" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
+                <a href="#reservation" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A
+                    Table</a>
             </div>
             <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                 <img class="img-fluid" src="<?php echo Restorant_ASSETS_URL; ?>/img/hero.png" alt="">
@@ -21,15 +22,19 @@
 
 
 <?php
-$softuni_options = get_option('softuni_options');
-if (empty($softuni_options)) {
-    $softuni_options = 4;
-}
+$service_number = get_option('service_number') ? get_option('service_number') : 4;
+
+$food_number = get_option('food_number') ? get_option('food_number') : 4;
+
+$hide_service_section = get_option('hide_service_section') ? get_option('hide_service_section') : 'unhide';
+
+$hide_food_section = get_option('hide_food_section') ? get_option('hide_food_section') : 'unhide';
+
 
 $service_args = array(
     'post_type' => 'service',
     'post_status' => 'publish',
-    'posts_per_page' => $softuni_options,
+    'posts_per_page' => $service_number,
 );
 
 $service_query = new WP_Query($service_args);
@@ -55,7 +60,7 @@ $clients_query = new WP_Query($clients_args);
 $restorant_breakfast_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 8,
+    "posts_per_page" => $food_number,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -68,7 +73,7 @@ $restorant_breakfast_menu_arg = array(
 $restorant_launch_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 8,
+    "posts_per_page" => $food_number,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -81,7 +86,7 @@ $restorant_launch_menu_arg = array(
 $restorant_dinner_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 8,
+    "posts_per_page" => $food_number,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -97,7 +102,8 @@ $restorant_launch_menu_query = new WP_Query($restorant_launch_menu_arg);
 $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 ?>
 <!-- Service Start -->
-<div class="container-xxl py-5">
+
+<div class="container-xxl py-5" <?php if($hide_service_section=='hide'){ ?> style="display: none" <?php } ?>>
     <div class="container">
         <div class="row g-4">
             <?php if ($service_query->have_posts()): ?>
@@ -186,7 +192,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 
 
 <!-- Menu Start -->
-<div class="container-xxl py-5">
+<div class="container-xxl py-5" <?php if($hide_food_section=='hide'){ ?> style="display: none" <?php } ?>>
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>

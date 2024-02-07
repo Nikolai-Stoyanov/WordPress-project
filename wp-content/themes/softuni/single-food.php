@@ -23,7 +23,7 @@
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center">
                             <?php if (has_post_thumbnail()): ?>
-                                <?php the_post_thumbnail('square-400'); ?>
+                                <?php the_post_thumbnail('post-thumbnail', [ 'class' => 'flex-shrink-0 img-fluid rounded', 'style' => 'width: 200px; height: 200px;' ]); ?>
                             <?php else: ?>
                                 <img class="flex-shrink-0 img-fluid rounded" src="<?php echo Restorant_ASSETS_URL; ?>/img/hero.png"
                                     style="width: 400px; height: 400px;">

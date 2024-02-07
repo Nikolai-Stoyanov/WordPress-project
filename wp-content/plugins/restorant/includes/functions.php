@@ -88,22 +88,22 @@ add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
 /**
  * Add the top level menu page.
  */
-function softuni_options_page()
+function options_page()
 {
     add_menu_page(
-        'SoftUni',
-        'SoftUni Options',
+        'Option page',
+        'Option page',
         'manage_options',
-        'softuni-options',
-        'softuni_options_page_html'
+        'my-options',
+        'options_page_html'
     );
 }
 /**
  * Register our softuni_options_page to the admin_menu action hook.
  */
-add_action('admin_menu', 'softuni_options_page');
+add_action('admin_menu', 'options_page');
 
-function softuni_options_page_html()
+function options_page_html()
 {
     include RESTORANT_PLUGIN_INCLUDES_DIR . '/options-page.php';
 }
