@@ -1,14 +1,13 @@
 <?php get_header(); ?>
 
-<div class="container-xxl py-5 bg-dark hero-header mb-5">
-    <div class="container text-center my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">
-            <?php the_archive_title(); ?>
-        </h1>
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">
+                <?php the_archive_title(); ?>
+            </h1>
+        </div>
     </div>
 </div>
-</div>
-<!-- Navbar & Hero End -->
 
 <?php
 $restorant_archive_arg = array(
@@ -47,9 +46,6 @@ $restorant_archive_query = new WP_Query($restorant_archive_arg);
         </div>
 
     <?php endwhile; ?>
-    <div style="text-align:center;">
-        <?php posts_nav_link(' · ', 'previous page', 'next page'); ?>
-    </div>
 <?php endif; ?>
 
 <?php wp_reset_postdata(); ?>

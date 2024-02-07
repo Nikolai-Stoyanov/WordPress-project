@@ -1,32 +1,34 @@
 <?php // Template Name: menu ?>
 <?php get_header(); ?>
 
-<div class="container-xxl py-5 bg-dark hero-header mb-5">
-    <div class="container text-center my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">
-            <?php _e('Food Menu', 'softuni'); ?>
-        </h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="<?php echo esc_url(get_home_url()); ?>">
-                        <?php _e('Home', 'softuni'); ?>
-                    </a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">
-                    <?php _e('Menu', 'softuni'); ?>
-                </li>
-            </ol>
-        </nav>
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">
+                <?php _e('Food Menu', 'softuni'); ?>
+            </h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="<?php echo esc_url(get_home_url()); ?>">
+                            <?php _e('Home', 'softuni'); ?>
+                        </a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">
+                        <?php _e('Menu', 'softuni'); ?>
+                    </li>
+                </ol>
+            </nav>
+        </div>
     </div>
-</div>
 </div>
 
 
 
 <?php
+$food_number = get_option('food_number') ? get_option('food_number') : 4;
+
 $restorant_breakfast_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 50,
+    "posts_per_page" => $food_number,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -39,7 +41,7 @@ $restorant_breakfast_menu_arg = array(
 $restorant_launch_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 8,
+    "posts_per_page" => $food_number,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -52,7 +54,7 @@ $restorant_launch_menu_arg = array(
 $restorant_dinner_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 8,
+    "posts_per_page" => $food_number,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -289,5 +291,6 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
             </div>
         </div>
     </div>
+</div>
 
-    <?php get_footer(); ?>
+<?php get_footer(); ?>

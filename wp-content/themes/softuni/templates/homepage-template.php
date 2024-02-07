@@ -101,8 +101,7 @@ $restorant_breakfast_menu_query = new WP_Query($restorant_breakfast_menu_arg);
 $restorant_launch_menu_query = new WP_Query($restorant_launch_menu_arg);
 $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 ?>
-<!-- Service Start -->
-
+<!-- Service -->
 <div class="container-xxl py-5" <?php if($hide_service_section=='hide'){ ?> style="display: none" <?php } ?>>
     <div class="container">
         <div class="row g-4">
@@ -129,10 +128,10 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
         </div>
     </div>
 </div>
-<!-- Service End -->
+<!-- Service -->
 
 
-<!-- About Start -->
+<!-- About-->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -188,10 +187,10 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
         </div>
     </div>
 </div>
-<!-- About End -->
+<!-- About -->
 
 
-<!-- Menu Start -->
+<!-- Menu  -->
 <div class="container-xxl py-5" <?php if($hide_food_section=='hide'){ ?> style="display: none" <?php } ?>>
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -361,10 +360,10 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
         </div>
     </div>
 </div>
-<!-- Menu End -->
+<!-- Menu -->
 
 
-<!-- Reservation Start -->
+<!-- Reservation -->
 <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s" id="reservation">
     <div class="row g-0">
         <div class="col-md-6">
@@ -431,7 +430,6 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- 16:9 aspect ratio -->
                 <div class="ratio ratio-16x9">
                     <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
                         allow="autoplay"></iframe>
@@ -440,10 +438,10 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
         </div>
     </div>
 </div>
-<!-- Reservation Start -->
+<!-- Reservation -->
 
 
-<!-- Team Start -->
+<!-- Team -->
 <div class="container-xxl pt-5 pb-3">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -488,10 +486,10 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
         </div>
     </div>
 </div>
-<!-- Team End -->
+<!-- Team -->
 
 
-<!-- Testimonial Start -->
+<!-- Testimonial -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.2s">
     <div class="container">
         <div class="text-center">

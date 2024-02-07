@@ -1,14 +1,13 @@
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
-        <div class="col-lg-3 col-md-6">
-            <?php
-            if (is_active_sidebar('footer-company')) {
-                get_sidebar('footer-company');
-            }
-            ;
-            ?>
-             </div>
+            <div class="col-lg-3 col-md-6">
+                <?php
+                    if (is_active_sidebar('footer-company')) {
+                        get_sidebar('footer-company');
+                    };
+                ?>
+            </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
@@ -22,20 +21,18 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-            <?php
-            if (is_active_sidebar('footer-opening')) {
-                get_sidebar('footer-opening');
-            }
-            ;
-            ?>
-             </div>
+                <?php
+                    if (is_active_sidebar('footer-opening')) {
+                        get_sidebar('footer-opening');
+                    };
+                ?>
+            </div>
             <div class="col-lg-3 col-md-6">
-            <?php
-            if (is_active_sidebar('footer-newsletter')) {
-                get_sidebar('footer-newsletter');
-            }
-            ;
-            ?>
+                <?php
+                    if (is_active_sidebar('footer-newsletter')) {
+                        get_sidebar('footer-newsletter');
+                    };
+                ?>
             </div>
         </div>
     </div>

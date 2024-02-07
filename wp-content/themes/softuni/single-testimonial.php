@@ -42,6 +42,5 @@
             <?php endif; ?>
         </div>
     </div>
-    <!-- Testimonial End -->
-
+</div>
     <?php get_footer(); ?>

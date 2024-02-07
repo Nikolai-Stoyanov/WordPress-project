@@ -1,8 +1,6 @@
 <?php
 
-
-function show_profession_by_id($atts)
-{
+function show_profession_by_id( $atts ){
     $shortcode_atts = shortcode_atts(
         array(
             'id' => '',
@@ -12,22 +10,21 @@ function show_profession_by_id($atts)
 
     $profession = '';
 
-    if (!empty($shortcode_atts['id'])) {
-        $profession = get_post_meta($shortcode_atts['id'], 'profession', true);
+    if (!empty($shortcode_atts[ 'id' ])) {
+        $profession = get_post_meta($shortcode_atts[ 'id' ], 'profession', true);
     }
 
     return $profession;
 }
-add_shortcode('show_profession', 'show_profession_by_id');
+add_shortcode( 'show_profession', 'show_profession_by_id' );
 
 
 
 
-function more_post_ajax()
-{
-    $ppp = (isset($_POST["posts_per_page"])) ? $_POST["posts_per_page"] : 4;
-    $page = (isset($_POST['paged'])) ? $_POST['paged'] : 0;
-    $type = (isset($_POST['post_type'])) ? $_POST['post_type'] : null;
+function more_post_ajax(){
+    $ppp = ( isset( $_POST[ "posts_per_page" ])) ? $_POST["posts_per_page"] : 4;
+    $page = ( isset( $_POST[ 'paged' ])) ? $_POST['paged'] : 0;
+    $type = ( isset( $_POST[ 'post_type' ])) ? $_POST['post_type'] : null;
 
     header("Content-Type: text/html");
     $args = array(
@@ -79,17 +76,11 @@ function more_post_ajax()
     die();
 }
 
-add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
-add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
+add_action( 'wp_ajax_nopriv_more_post_ajax', 'more_post_ajax' );
+add_action( 'wp_ajax_more_post_ajax', 'more_post_ajax' );
 
 
-
-
-/**
- * Add the top level menu page.
- */
-function options_page()
-{
+function options_page(){
     add_menu_page(
         'Option page',
         'Option page',
@@ -98,12 +89,8 @@ function options_page()
         'options_page_html'
     );
 }
-/**
- * Register our softuni_options_page to the admin_menu action hook.
- */
-add_action('admin_menu', 'options_page');
+add_action( 'admin_menu', 'options_page' );
 
-function options_page_html()
-{
+function options_page_html(){
     include RESTORANT_PLUGIN_INCLUDES_DIR . '/options-page.php';
 }

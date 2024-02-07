@@ -1,11 +1,9 @@
 <?php
 if (!class_exists("Restorant_Cpt")):
 
-	class Restorant_Cpt
-	{
+	class Restorant_Cpt{
 
-		function __construct()
-		{
+		function __construct(){
 			add_action('init', array( $this, 'services_cpt' ));
 			add_action('init', array( $this, 'team_cpt' ));
 			add_action('init', array( $this, 'testimonial_cpt' ));
@@ -16,8 +14,7 @@ if (!class_exists("Restorant_Cpt")):
 		}
 
 	
-		public function team_cpt()
-		{
+		public function team_cpt(){
 			$labels = array(
 				'name' => _x('Team', 'Post type general name', 'softuni'),
 				'singular_name' => _x('Team', 'Post type singular name', 'softuni'),
@@ -55,8 +52,7 @@ if (!class_exists("Restorant_Cpt")):
 			register_post_type('team', $args);
 		}
 
-		public function testimonial_cpt()
-		{
+		public function testimonial_cpt(){
 			$labels = array(
 				'name' => _x('Testimonials', 'Post type general name', 'softuni'),
 				'singular_name' => _x('Testimonial', 'Post type singular name', 'softuni'),
@@ -94,8 +90,7 @@ if (!class_exists("Restorant_Cpt")):
 			register_post_type('testimonial', $args);
 		}
 
-		public function foods_cpt()
-		{
+		public function foods_cpt(){
 			$labels = array(
 				'name' => _x('Foods', 'Post type general name', 'softuni'),
 				'singular_name' => _x('Food', 'Post type singular name', 'softuni'),
@@ -133,8 +128,7 @@ if (!class_exists("Restorant_Cpt")):
 			register_post_type('food', $args);
 		}
 
-		public function services_cpt()
-		{
+		public function services_cpt(){
 			$labels = array(
 				'name' => _x('Services', 'Post type general name', 'softuni'),
 				'singular_name' => _x('Service', 'Post type singular name', 'softuni'),
@@ -172,8 +166,7 @@ if (!class_exists("Restorant_Cpt")):
 			register_post_type('service', $args);
 		}
 
-		public function restorant_category_taxonomy()
-		{
+		public function restorant_category_taxonomy(){
 			$labels = array(
 				'name' => 'Categories',
 				'singular_name' => 'Category',
@@ -197,8 +190,7 @@ if (!class_exists("Restorant_Cpt")):
 		/**
 		 * Register meta box(es).
 		 */
-		public function register_meta_boxes()
-		{
+		public function register_meta_boxes(){
 			add_meta_box('price', __('Price', 'softuni'), array( $this, 'food_price_metabox_callback' ), 'food', 'side');
 			add_meta_box('food_type', __('Food Type', 'softuni'), array( $this, 'food_type_metabox_callback' ), 'food', 'side');
 		}
@@ -208,8 +200,7 @@ if (!class_exists("Restorant_Cpt")):
 		 *
 		 * @return void
 		 */
-		public function food_price_metabox_callback($post_id)
-		{
+		public function food_price_metabox_callback($post_id){
 			$price = get_post_meta($post_id->ID, 'price', true);
 			?>
 			<div>
@@ -221,8 +212,7 @@ if (!class_exists("Restorant_Cpt")):
 			<?php
 		}
 
-		public function food_type_metabox_callback($post_id)
-		{
+		public function food_type_metabox_callback($post_id){
 			$food_type = get_post_meta($post_id->ID, 'food_type', true);
 			?>
 
@@ -248,8 +238,7 @@ if (!class_exists("Restorant_Cpt")):
 		 *
 		 * @return void
 		 */
-		public function food_meta_save($post_id)
-		{
+		public function food_meta_save($post_id){
 			if (empty($post_id)) {
 				return;
 			}
@@ -269,7 +258,6 @@ if (!class_exists("Restorant_Cpt")):
 			update_post_meta($post_id, 'food_type', $food_type);
 		}
 	}
-
 
 	$restorant_cpt = new Restorant_Cpt();
 
