@@ -29,3 +29,23 @@
 
  require RESTORANT_PLUGIN_INCLUDES_DIR . "/functions.php";
  require RESTORANT_PLUGIN_INCLUDES_DIR . "/restorant.php";
+
+
+
+function restorant_plugin_enqueue_assets() {
+   wp_enqueue_script(
+       "restorant-assets-plugin", 
+       RESTORANT_PLUGIN_INCLUDES_ASSETS_DIR ."/js/scripts.js", 
+       array("jquery"),
+       "1.2"
+   );
+
+
+       wp_localize_script( 'restorant-assets-plugin', 'ajax_posts', array(
+           'ajaxurl' => admin_url( 'admin-ajax.php' ),
+           'noposts' => __('No older posts found', 'twentyfifteen'),
+       ));
+
+
+}
+add_action("wp_enqueue_scripts","restorant_plugin_enqueue_assets");

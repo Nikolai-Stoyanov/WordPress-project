@@ -3,11 +3,17 @@
 
 <div class="container-xxl py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">Food Menu</h1>
+        <h1 class="display-3 text-white mb-3 animated slideInDown">
+            <?php _e('Food Menu', 'softuni'); ?>
+        </h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="<?php echo get_home_url('/'); ?>">Home</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Menu</li>
+                <li class="breadcrumb-item"><a href="<?php echo esc_url(get_home_url()); ?>">
+                        <?php _e('Home', 'softuni'); ?>
+                    </a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">
+                    <?php _e('Menu', 'softuni'); ?>
+                </li>
             </ol>
         </nav>
     </div>
@@ -20,7 +26,7 @@
 $restorant_breakfast_menu_arg = array(
     "post_type" => "food",
     "post_status" => "publish",
-    "posts_per_page" => 8,
+    "posts_per_page" => 50,
     "paged" => get_query_var("paged"),
     'meta_query' => array(
         array(
@@ -72,7 +78,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
         </div>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                <li class="nav-item">
+                <li class="nav-item myTab">
                     <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill"
                         href="#tab-1">
                         <i class="fa fa-coffee fa-2x text-primary"></i>
@@ -82,7 +88,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item myTab">
                     <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
                         <i class="fa fa-hamburger fa-2x text-primary"></i>
                         <div class="ps-3">
@@ -103,7 +109,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
             </ul>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <div class="row g-4">
+                    <div class="row g-4" id="ajax_posts_breakfast">
                         <?php if ($restorant_breakfast_menu_query->have_posts()): ?>
                             <?php while ($restorant_breakfast_menu_query->have_posts()):
                                 $restorant_breakfast_menu_query->the_post(); ?>
@@ -111,7 +117,6 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                                 <div class="col-lg-6">
                                     <a href="<?php the_permalink(); ?>" style="cursor:pointer;">
                                         <div class="d-flex align-items-center">
-
                                             <?php if (has_post_thumbnail()): ?>
                                                 <?php the_post_thumbnail('square-80'); ?>
                                             <?php else: ?>
@@ -139,16 +144,32 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                                         </div>
                                     </a>
                                 </div>
-
                             <?php endwhile; ?>
                         <?php else: ?>
                             <?php _e('Sorry, no posts found', 'softuni'); ?>
                         <?php endif; ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
+                    <div id="more_posts_breakfast" class="more_posts">
+                        <style>
+                            .more_posts {
+                                margin: 10px;
+                                display: flex;
+                                justify-content: center;
+                            }
+                            #more_post_button:hover {
+                                cursor: pointer;
+                                color: orange
+                            }
+                        </style>
+                        <div class="col-lg-2" id="more_post_button">
+                            <div>Load More</div>
+                            <div><i class="fa fa-solid fa-chevron-down"></i></div>
+                        </div>
+                    </div>
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">
-                    <div class="row g-4">
+                    <div class="row g-4" id="ajax_posts_launch">
                         <?php if ($restorant_launch_menu_query->have_posts()): ?>
                             <?php while ($restorant_launch_menu_query->have_posts()):
                                 $restorant_launch_menu_query->the_post(); ?>
@@ -187,9 +208,27 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                         <?php endif; ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
+                    <div id="more_posts_launch" class="more_posts">
+                        <style>
+                            .more_posts {
+                                margin: 10px;
+                                display: flex;
+                                justify-content: center;
+                            }
+
+                            #more_post_button:hover {
+                                cursor: pointer;
+                                color: orange
+                            }
+                        </style>
+                        <div class="col-lg-2" id="more_post_button">
+                            <div>Load More</div>
+                            <div><i class="fa fa-solid fa-chevron-down"></i></div>
+                        </div>
+                    </div>
                 </div>
                 <div id="tab-3" class="tab-pane fade show p-0">
-                    <div class="row g-4">
+                    <div class="row g-4" id="ajax_posts_dinner">
                         <?php if ($restorant_dinner_menu_query->have_posts()): ?>
                             <?php while ($restorant_dinner_menu_query->have_posts()):
                                 $restorant_dinner_menu_query->the_post(); ?>
@@ -227,6 +266,24 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                             <?php _e('Sorry, no posts found', 'softuni'); ?>
                         <?php endif; ?>
                         <?php wp_reset_postdata(); ?>
+                    </div>
+                    <div id="more_posts_dinner" class="more_posts">
+                        <style>
+                            .more_posts {
+                                margin: 10px;
+                                display: flex;
+                                justify-content: center;
+                            }
+
+                            #more_post_button:hover {
+                                cursor: pointer;
+                                color: orange
+                            }
+                        </style>
+                        <div class="col-lg-2" id="more_post_button">
+                            <div>Load More</div>
+                            <div><i class="fa fa-solid fa-chevron-down"></i></div>
+                        </div>
                     </div>
                 </div>
             </div>

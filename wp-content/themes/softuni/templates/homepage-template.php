@@ -9,7 +9,7 @@
                 <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam
                     ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita
                     duo justo magna dolore erat amet</p>
-                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
+                <a href="#reservation" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
             </div>
             <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                 <img class="img-fluid" src="<?php echo Restorant_ASSETS_URL; ?>/img/hero.png" alt="">
@@ -42,6 +42,15 @@ $team_args = array(
 );
 
 $team_query = new WP_Query($team_args);
+
+$clients_args = array(
+    "post_type" => "testimonial",
+    "post_status" => "publish",
+    "posts_per_page" => 4,
+    "paged" => get_query_var("paged"),
+);
+
+$clients_query = new WP_Query($clients_args);
 
 $restorant_breakfast_menu_arg = array(
     "post_type" => "food",
@@ -350,7 +359,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 
 
 <!-- Reservation Start -->
-<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s" id="reservation">
     <div class="row g-0">
         <div class="col-md-6">
             <div class="video">
@@ -484,62 +493,42 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
             <h1 class="mb-5">Our Clients Say!!!</h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                        src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-1.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                        src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-2.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                        src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-3.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                        src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-4.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
+            <?php if ($clients_query->have_posts()): ?>
+                <?php while ($clients_query->have_posts()):
+                    $clients_query->the_post(); ?>
+                    <a href="<?php the_permalink(); ?>" style="cursor:pointer;">
+                        <div class="testimonial-item bg-transparent border rounded p-4" style="margin-right:10px">
+                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                            <div
+                                style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;">
+                                <?php the_content(); ?>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <?php the_post_thumbnail('post-thumbnail', [ 'class' => 'img-fluid flex-shrink-0 rounded-circle square-50', 'style' => 'width:100px' ]); ?>
+                                <?php else: ?>
+                                    <img class="img-fluid flex-shrink-0 rounded-circle"
+                                        src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-1.jpg"
+                                        style="width: 50px; height: 50px;">
+                                <?php endif; ?>
+                                <div class="ps-3">
+                                    <h5 class="mb-1">
+                                        <?php the_title(); ?>
+                                    </h5>
+                                    <small>
+                                        <?php $profession_value = get_post_meta(get_the_ID(), 'profession', true);
+                                        echo "<span class='box'>$profession_value</span>";
+                                        ?>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php endwhile; ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>
-<!-- Testimonial End -->
 
 
 <?php get_footer(); ?>

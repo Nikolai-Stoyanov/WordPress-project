@@ -14,7 +14,7 @@
 $restorant_archive_arg = array(
     "post_type" => "post",
     "post_status" => "publish",
-    "posts_per_page" => 1,
+    "posts_per_page" => 2,
     "paged"=> get_query_var("paged"),
 );
 

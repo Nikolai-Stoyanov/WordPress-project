@@ -35,7 +35,7 @@ function restorant_enqueue_assets()
     wp_enqueue_script("owl-carousel.min", Restorant_ASSETS_URL . '/lib/owlcarousel/owl.carousel.min.js', array( 'jquery' ), Restorant_ASSETS_VERSION, array());
     wp_enqueue_script("moment", Restorant_ASSETS_URL . '/lib/tempusdominus/js/moment.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
     wp_enqueue_script("moment-timezone", Restorant_ASSETS_URL . '/lib/tempusdominus/js/moment-timezone.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("tempusdominus-bootstrap-4", Restorant_ASSETS_URL . '/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
+    wp_enqueue_script("tempusdominus-bootstrap-4.min", Restorant_ASSETS_URL . '/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
     wp_enqueue_script("main", Restorant_ASSETS_URL . '/js/main.js', array(), Restorant_ASSETS_VERSION, array( 'jquery' ));
 
 }
@@ -56,7 +56,8 @@ add_action("init", "restorant_register_menus");
 
 add_image_size('square-80', 80, 80, true);
 add_image_size('square-150', 150, 150, true);
-
+add_image_size('square-400', 400, 400, true);
+add_image_size('square-50', 50, 50, true);
 
 
 function restorant_sidebars()
