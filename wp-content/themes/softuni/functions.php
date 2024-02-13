@@ -1,12 +1,12 @@
 <?php
 
-if (!defined("Restorant_ASSETS_VERSION")) {
-    define("Restorant_ASSETS_VERSION", "0.3");
+if (!defined("RESTORANT_ASSETS_VERSION")) {
+    define("RESTORANT_ASSETS_VERSION", "0.3");
 }
 ;
 
-if (!defined("Restorant_ASSETS_URL")) {
-    define("Restorant_ASSETS_URL", get_template_directory_uri() . '/assets/');
+if (!defined("RESTORANT_ASSETS_URL")) {
+    define("RESTORANT_ASSETS_URL", get_template_directory_uri() . '/assets/');
 }
 ;
 
@@ -22,21 +22,21 @@ add_theme_support('post-thumbnails');
 function restorant_enqueue_assets()
 {
 
-    wp_enqueue_style("animate", Restorant_ASSETS_URL . "/lib/animate/animate.min.css", array( 'jquery' ), "Restorant_ASSETS_VERSION");
-    wp_enqueue_style("owl-carousel", Restorant_ASSETS_URL . "/lib/owlcarousel/assets/owl.carousel.min.css", array(), "Restorant_ASSETS_VERSION");
-    wp_enqueue_style("tempusdominus-bootstrap-4", Restorant_ASSETS_URL . "/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css", array(), "Restorant_ASSETS_VERSION");
-    wp_enqueue_style("bootstrap", Restorant_ASSETS_URL . "/css/bootstrap.min.css", array(), "Restorant_ASSETS_VERSION");
-    wp_enqueue_style("style", Restorant_ASSETS_URL . "/css/style.css", array(), "Restorant_ASSETS_VERSION");
+    wp_enqueue_style("animate", RESTORANT_ASSETS_URL . "/lib/animate/animate.min.css", array( 'jquery' ), "RESTORANT_ASSETS_VERSION");
+    wp_enqueue_style("owl-carousel", RESTORANT_ASSETS_URL . "/lib/owlcarousel/assets/owl.carousel.min.css", array(), "RESTORANT_ASSETS_VERSION");
+    wp_enqueue_style("tempusdominus-bootstrap-4", RESTORANT_ASSETS_URL . "/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css", array(), "RESTORANT_ASSETS_VERSION");
+    wp_enqueue_style("bootstrap", RESTORANT_ASSETS_URL . "/css/bootstrap.min.css", array(), "RESTORANT_ASSETS_VERSION");
+    wp_enqueue_style("style", RESTORANT_ASSETS_URL . "/css/style.css", array(), "RESTORANT_ASSETS_VERSION");
 
-    wp_enqueue_script("wow", Restorant_ASSETS_URL . '/lib/wow/wow.min.js', array( 'jquery' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("easing", Restorant_ASSETS_URL . '/lib/easing/easing.min.js', array( 'jquery' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("wowaypointsw", Restorant_ASSETS_URL . '/lib/waypoints/waypoints.min.js', array( 'jquery' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("counterup", Restorant_ASSETS_URL . '/lib/counterup/counterup.min.js', array( 'jquery' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("owl-carousel.min", Restorant_ASSETS_URL . '/lib/owlcarousel/owl.carousel.min.js', array( 'jquery' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("moment", Restorant_ASSETS_URL . '/lib/tempusdominus/js/moment.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("moment-timezone", Restorant_ASSETS_URL . '/lib/tempusdominus/js/moment-timezone.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("tempusdominus-bootstrap-4.min", Restorant_ASSETS_URL . '/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js', array( 'jquery', 'Moment.js' ), Restorant_ASSETS_VERSION, array());
-    wp_enqueue_script("main", Restorant_ASSETS_URL . '/js/main.js', array(), Restorant_ASSETS_VERSION, array( 'jquery' ));
+    wp_enqueue_script("wow", RESTORANT_ASSETS_URL . '/lib/wow/wow.min.js', array( 'jquery' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("easing", RESTORANT_ASSETS_URL . '/lib/easing/easing.min.js', array( 'jquery' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("wowaypointsw", RESTORANT_ASSETS_URL . '/lib/waypoints/waypoints.min.js', array( 'jquery' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("counterup", RESTORANT_ASSETS_URL . '/lib/counterup/counterup.min.js', array( 'jquery' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("owl-carousel.min", RESTORANT_ASSETS_URL . '/lib/owlcarousel/owl.carousel.min.js', array( 'jquery' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("moment", RESTORANT_ASSETS_URL . '/lib/tempusdominus/js/moment.min.js', array( 'jquery', 'Moment.js' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("moment-timezone", RESTORANT_ASSETS_URL . '/lib/tempusdominus/js/moment-timezone.min.js', array( 'jquery', 'Moment.js' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("tempusdominus-bootstrap-4.min", RESTORANT_ASSETS_URL . '/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js', array( 'jquery', 'Moment.js' ), RESTORANT_ASSETS_VERSION, array());
+    wp_enqueue_script("main", RESTORANT_ASSETS_URL . '/js/main.js', array(), RESTORANT_ASSETS_VERSION, array( 'jquery' ));
 
 }
 ;

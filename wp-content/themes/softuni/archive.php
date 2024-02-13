@@ -35,7 +35,7 @@ $restorant_archive_query = new WP_Query($restorant_archive_arg);
                         <?php the_post_thumbnail(); ?>
                     <?php else: ?>
                         <img class="img-fluid flex-shrink-0 rounded-circle"
-                            src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-4.jpg"
+                            src="<?php echo RESTORANT_ASSETS_URL; ?>/img/testimonial-4.jpg"
                             style="width: 100px; height: 100px;">
                     <?php endif; ?>
                     <div>

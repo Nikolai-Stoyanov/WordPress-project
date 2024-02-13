@@ -21,7 +21,7 @@
                         <?php if (has_post_thumbnail()): ?>
                             <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']); ?>
                         <?php else: ?>
-                            <img class="img-fluid" src="<?php echo Restorant_ASSETS_URL; ?>img/team-1.jpg" alt="">
+                            <img class="img-fluid" src="<?php echo RESTORANT_ASSETS_URL; ?>img/team-1.jpg" alt="">
                         <?php endif; ?>
                     </div>
                     <h5 class="mb-0">

@@ -8,19 +8,23 @@ if (!empty($_POST['save']) && $_POST['save'] == 1) {
     if (!empty($_POST['service_number'])) {
         $options = esc_attr($_POST['service_number']);
         update_option('service_number', $options, false);
+        $current_service_number= $options;
     }
 
     if (!empty($_POST['hide_service_section'])) {
         $options = esc_attr($_POST['hide_service_section']);
         update_option('hide_service_section', $options, false);
+        $hide_service_section= $options;
     }
     if (!empty($_POST['food_number'])) {
         $options = esc_attr($_POST['food_number']);
         update_option('food_number', $options, false);
+        $current_food_number =$options;
     }
     if (!empty($_POST['hide_food_section'])) {
         $options = esc_attr($_POST['hide_food_section']);
         update_option('hide_food_section', $options, false);
+        $hide_food_section = $options;
     }
 }
 ?>

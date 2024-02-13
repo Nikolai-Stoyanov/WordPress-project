@@ -13,7 +13,7 @@
                     Table</a>
             </div>
             <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                <img class="img-fluid" src="<?php echo Restorant_ASSETS_URL; ?>/img/hero.png" alt="">
+                <img class="img-fluid" src="<?php echo RESTORANT_ASSETS_URL; ?>/img/hero.png" alt="">
             </div>
         </div>
     </div>
@@ -23,8 +23,6 @@
 
 <?php
 $service_number = get_option('service_number') ? get_option('service_number') : 4;
-
-$food_number = get_option('food_number') ? get_option('food_number') : 4;
 
 $hide_service_section = get_option('hide_service_section') ? get_option('hide_service_section') : 'unhide';
 
@@ -39,15 +37,6 @@ $service_args = array(
 
 $service_query = new WP_Query($service_args);
 
-$team_args = array(
-    "post_type" => "team",
-    "post_status" => "publish",
-    "posts_per_page" => 4,
-    "paged" => get_query_var("paged"),
-);
-
-$team_query = new WP_Query($team_args);
-
 $clients_args = array(
     "post_type" => "testimonial",
     "post_status" => "publish",
@@ -56,53 +45,9 @@ $clients_args = array(
 );
 
 $clients_query = new WP_Query($clients_args);
-
-$restorant_breakfast_menu_arg = array(
-    "post_type" => "food",
-    "post_status" => "publish",
-    "posts_per_page" => $food_number,
-    "paged" => get_query_var("paged"),
-    'meta_query' => array(
-        array(
-            'key' => 'food_type',
-            'value' => 'Breakfast',
-            'compare' => '='
-        )
-    ),
-);
-$restorant_launch_menu_arg = array(
-    "post_type" => "food",
-    "post_status" => "publish",
-    "posts_per_page" => $food_number,
-    "paged" => get_query_var("paged"),
-    'meta_query' => array(
-        array(
-            'key' => 'food_type',
-            'value' => 'Launch',
-            'compare' => '='
-        )
-    ),
-);
-$restorant_dinner_menu_arg = array(
-    "post_type" => "food",
-    "post_status" => "publish",
-    "posts_per_page" => $food_number,
-    "paged" => get_query_var("paged"),
-    'meta_query' => array(
-        array(
-            'key' => 'food_type',
-            'value' => 'Dinner',
-            'compare' => '='
-        )
-    ),
-);
-
-$restorant_breakfast_menu_query = new WP_Query($restorant_breakfast_menu_arg);
-$restorant_launch_menu_query = new WP_Query($restorant_launch_menu_arg);
-$restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 ?>
 <!-- Service -->
-<div class="container-xxl py-5" <?php if($hide_service_section=='hide'){ ?> style="display: none" <?php } ?>>
+<div class="container-xxl py-5" <?php if ($hide_service_section == 'hide') { ?> style="display: none" <?php } ?>>
     <div class="container">
         <div class="row g-4">
             <?php if ($service_query->have_posts()): ?>
@@ -132,234 +77,17 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 
 
 <!-- About-->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <div class="row g-3">
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
-                            src="<?php echo Restorant_ASSETS_URL; ?>/img/about-1.jpg">
-                    </div>
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
-                            src="<?php echo Restorant_ASSETS_URL; ?>/img/about-2.jpg" style="margin-top: 25%;">
-                    </div>
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
-                            src="<?php echo Restorant_ASSETS_URL; ?>/img/about-3.jpg">
-                    </div>
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
-                            src="<?php echo Restorant_ASSETS_URL; ?>/img/about-4.jpg">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restoran</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos
-                    erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                    eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                <div class="row g-4 mb-4">
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                            <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
-                            <div class="ps-4">
-                                <p class="mb-0">Years of</p>
-                                <h6 class="text-uppercase mb-0">Experience</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                            <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
-                            <div class="ps-4">
-                                <p class="mb-0">Popular</p>
-                                <h6 class="text-uppercase mb-0">Master Chefs</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="btn btn-primary py-3 px-5 mt-2" href="./about">Read More</a>
-            </div>
-        </div>
-    </div>
-</div>
+<?php get_template_part( 'partials/content', 'about'); ?>
 <!-- About -->
 
 
 <!-- Menu  -->
-<div class="container-xxl py-5" <?php if($hide_food_section=='hide'){ ?> style="display: none" <?php } ?>>
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-            <h1 class="mb-5">Most Popular Items</h1>
-        </div>
-        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-            <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill"
-                        href="#tab-1">
-                        <i class="fa fa-coffee fa-2x text-primary"></i>
-                        <div class="ps-3">
-                            <small class="text-body">Popular</small>
-                            <h6 class="mt-n1 mb-0">Breakfast</h6>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                        <i class="fa fa-hamburger fa-2x text-primary"></i>
-                        <div class="ps-3">
-                            <small class="text-body">Special</small>
-                            <h6 class="mt-n1 mb-0">Launch</h6>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                        <i class="fa fa-utensils fa-2x text-primary"></i>
-                        <div class="ps-3">
-                            <small class="text-body">Lovely</small>
-                            <h6 class="mt-n1 mb-0">Dinner</h6>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <div class="row g-4">
-                        <?php if ($restorant_breakfast_menu_query->have_posts()): ?>
-                            <?php while ($restorant_breakfast_menu_query->have_posts()):
-                                $restorant_breakfast_menu_query->the_post(); ?>
 
-                                <div class="col-lg-6">
-                                    <a href="<?php the_permalink(); ?>" style="cursor:pointer;">
-                                        <div class="d-flex align-items-center">
+<?php
+if ($hide_food_section == "unhide") {
+    get_template_part('partials/content', 'menu', array( "load_more_button_visible" => 'false' ));
+} ?>
 
-                                            <?php if (has_post_thumbnail()): ?>
-                                                <?php the_post_thumbnail('square-80'); ?>
-                                            <?php else: ?>
-                                                <img class="flex-shrink-0 img-fluid rounded"
-                                                    src="<?php echo Restorant_ASSETS_URL; ?>/img/menu-2.jpg" style="width: 80px;">
-                                            <?php endif; ?>
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h3 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span
-                                                        style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">
-                                                        <?php the_title(); ?>
-                                                    </span>
-                                                    <span class="text-primary" style="display: -webkit-box">
-                                                        <?php $price_value = get_post_meta(get_the_ID(), 'price', true);
-                                                        echo "<span class='box'>$$price_value</span>";
-                                                        ?>
-                                                    </span>
-                                                </h3>
-                                                <small class="fst-italic"
-                                                    style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">
-                                                    <?php the_content(); ?>
-
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <?php _e('Sorry, no posts found', 'softuni'); ?>
-                        <?php endif; ?>
-                        <?php wp_reset_postdata(); ?>
-                    </div>
-                </div>
-                <div id="tab-2" class="tab-pane fade show p-0">
-                    <div class="row g-4">
-                        <?php if ($restorant_launch_menu_query->have_posts()): ?>
-                            <?php while ($restorant_launch_menu_query->have_posts()):
-                                $restorant_launch_menu_query->the_post(); ?>
-                                <div class="col-lg-6">
-                                    <a href="<?php the_permalink(); ?>" style="cursor:pointer;">
-                                        <div class="d-flex align-items-center">
-                                            <?php if (has_post_thumbnail()): ?>
-                                                <?php the_post_thumbnail('square-80'); ?>
-                                            <?php else: ?>
-                                                <img class="flex-shrink-0 img-fluid rounded"
-                                                    src="<?php echo Restorant_ASSETS_URL; ?>/img/menu-2.jpg" style="width: 80px;">
-                                            <?php endif; ?>
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h3 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span
-                                                        style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">
-                                                        <?php the_title(); ?>
-                                                    </span>
-                                                    <span class="text-primary" style="display: -webkit-box">
-                                                        <?php $price_value = get_post_meta(get_the_ID(), 'price', true);
-                                                        echo "<span class='box'>$$price_value</span>";
-                                                        ?>
-                                                    </span>
-                                                </h3>
-                                                <small class="fst-italic"
-                                                    style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">
-                                                    <?php the_content(); ?>
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <?php _e('Sorry, no posts found', 'softuni'); ?>
-                        <?php endif; ?>
-                        <?php wp_reset_postdata(); ?>
-                    </div>
-                </div>
-                <div id="tab-3" class="tab-pane fade show p-0">
-                    <div class="row g-4">
-                        <?php if ($restorant_dinner_menu_query->have_posts()): ?>
-                            <?php while ($restorant_dinner_menu_query->have_posts()):
-                                $restorant_dinner_menu_query->the_post(); ?>
-                                <div class="col-lg-6">
-                                    <a href="<?php the_permalink(); ?>" style="cursor:pointer;">
-                                        <div class="d-flex align-items-center">
-                                            <?php if (has_post_thumbnail()): ?>
-                                                <?php the_post_thumbnail('square-80'); ?>
-                                            <?php else: ?>
-                                                <img class="flex-shrink-0 img-fluid rounded"
-                                                    src="<?php echo Restorant_ASSETS_URL; ?>/img/menu-2.jpg" style="width: 80px;">
-                                            <?php endif; ?>
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h3 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span
-                                                        style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">
-                                                        <?php the_title(); ?>
-                                                    </span>
-                                                    <span class="text-primary" style="display: -webkit-box">
-                                                        <?php $price_value = get_post_meta(get_the_ID(), 'price', true);
-                                                        echo "<span class='box'>$$price_value</span>";
-                                                        ?>
-                                                    </span>
-                                                </h3>
-                                                <small class="fst-italic"
-                                                    style="display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">
-                                                    <?php the_content(); ?>
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <?php _e('Sorry, no posts found', 'softuni'); ?>
-                        <?php endif; ?>
-                        <?php wp_reset_postdata(); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Menu -->
 
 
@@ -442,50 +170,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
 
 
 <!-- Team -->
-<div class="container-xxl pt-5 pb-3">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
-            <h1 class="mb-5">Our Master Chefs</h1>
-        </div>
-        <div class="row g-4">
-            <?php if ($team_query->have_posts()): ?>
-                <?php while ($team_query->have_posts()):
-                    $team_query->the_post(); ?>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="<?php the_permalink(); ?>" style="cursor:pointer;">
-                            <div class="team-item text-center rounded overflow-hidden">
-                                <div class="rounded-circle overflow-hidden m-4">
-                                    <?php if (has_post_thumbnail()): ?>
-                                        <?php the_post_thumbnail('post-thumbnail', [ 'class' => 'img-fluid' ]); ?>
-                                    <?php else: ?>
-                                        <img class="img-fluid" src="<?php echo Restorant_ASSETS_URL; ?>img/team-1.jpg" alt="">
-                                    <?php endif; ?>
-                                </div>
-                                <h5 class="mb-0">
-                                    <?php the_title(); ?>
-                                </h5>
-                                <small>
-                                    <?php $job_value = get_post_meta(get_the_ID(), 'job', true);
-                                    echo "<span class='box'>$job_value</span>";
-                                    ?>
-                                </small>
-                                <div class="d-flex justify-content-center mt-3">
-                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <?php _e('Sorry, no posts found', 'softuni'); ?>
-            <?php endif; ?>
-            <?php wp_reset_postdata(); ?>
-        </div>
-    </div>
-</div>
+<?php get_template_part( 'partials/content', 'team'); ?>
 <!-- Team -->
 
 
@@ -512,7 +197,7 @@ $restorant_dinner_menu_query = new WP_Query($restorant_dinner_menu_arg);
                                     <?php the_post_thumbnail('post-thumbnail', [ 'class' => 'img-fluid flex-shrink-0 rounded-circle square-50', 'style' => 'width:100px' ]); ?>
                                 <?php else: ?>
                                     <img class="img-fluid flex-shrink-0 rounded-circle"
-                                        src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-1.jpg"
+                                        src="<?php echo RESTORANT_ASSETS_URL; ?>/img/testimonial-1.jpg"
                                         style="width: 50px; height: 50px;">
                                 <?php endif; ?>
                                 <div class="ps-3">

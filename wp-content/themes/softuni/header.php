@@ -12,7 +12,7 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <link href="<?php echo Restorant_ASSETS_URL; ?>/img/favicon.ico" rel="icon">
+    <link href="<?php echo RESTORANT_ASSETS_URL; ?>/img/favicon.ico" rel="icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

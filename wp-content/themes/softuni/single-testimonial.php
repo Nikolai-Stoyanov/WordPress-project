@@ -22,7 +22,7 @@
                                 <?php the_post_thumbnail('square-400'); ?>
                             <?php else: ?>
                                 <img class="img-fluid flex-shrink-0 rounded-circle"
-                                    src="<?php echo Restorant_ASSETS_URL; ?>/img/testimonial-1.jpg"
+                                    src="<?php echo RESTORANT_ASSETS_URL; ?>/img/testimonial-1.jpg"
                                     style="width: 400px; height: 400px;">
                             <?php endif; ?>
                             <div class="ps-3">
